@@ -3,19 +3,13 @@ definePageMeta({
   layout: 'main',
 });
 
+const {getPosts, deletePost} = usePost();
+
 const {
-  data: postsData,
-  refresh: refrachPost,
-  error: errorPosts,
-} = await useLazyFetch('http://localhost:3001/posts');
+  data: postsData
+} = await getPosts();
 
-const deletePost = async (post) => {
-  const res = await $fetch(`http://localhost:3001/posts/${post.id}`, {
-    method: 'DELETE',
-  });
 
-  // postsData.value = postsData.value.filter((postItem) => postItem !== post);
-};
 </script>
 
 <template>

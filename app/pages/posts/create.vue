@@ -1,18 +1,12 @@
 <script setup>
 
+const {addPost} = usePost();
+
 const post = reactive({
   title: '',
   content: '',
 });
-const addPost = async function () {
 
-  const res = await $fetch('http://localhost:3001/posts', {
-    method: 'POST',
-    body: post
-  })
-
-
-}
 </script>
 
 <template>
@@ -31,7 +25,7 @@ const addPost = async function () {
         </div>
 
         <div>
-          <a href="#" @click.prevent="addPost" class="inline-block px-3 py-2 bg-sky-600 border border-sky-700 text-white">
+          <a href="#" @click.prevent="addPost(post)" class="inline-block px-3 py-2 bg-sky-600 border border-sky-700 text-white">
             Store Post</a>
         </div>
 

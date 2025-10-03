@@ -1,6 +1,6 @@
 <script setup>
-const route = useRoute();
-const {data: postData} = await useFetch(`http://localhost:3001/posts/${route.params.id}`);
+const {getPost} = usePost();
+const {data: postData} = await getPost();
 </script>
 
 <template>

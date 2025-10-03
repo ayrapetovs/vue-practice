@@ -1,14 +1,7 @@
 <script setup>
-const route = useRoute();
-const {data: postData} = await useFetch(`http://localhost:3001/posts/${route.params.id}`);
+const {getPost, updatePost} = usePost();
+const {data: postData} = await getPost();
 
-
-const updatePost = async () => {
-  const res = await $fetch(`http://localhost:3001/posts/${route.params.id}`, {
-    method: 'PATCH',
-    body: postData.value
-  })
-}
 </script>
 
 
@@ -28,7 +21,7 @@ const updatePost = async () => {
         </div>
 
         <div>
-          <a href="#" @click.prevent="updatePost" class="inline-block px-3 py-2 bg-sky-600 border border-sky-700 text-white">
+          <a href="#" @click.prevent="updatePost(postData)" class="inline-block px-3 py-2 bg-sky-600 border border-sky-700 text-white">
             Update Post</a>
         </div>
 
